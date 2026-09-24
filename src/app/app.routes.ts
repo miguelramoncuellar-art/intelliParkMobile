@@ -22,6 +22,13 @@ export const routes: Routes = [
       ).then((m) => m.VehicleEntryPage)
   },
   {
+    path: 'parking-info',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/parking-info/parking-info.page')
+        .then((m) => m.ParkingInfoPage)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
@@ -29,13 +36,5 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'login'
-  },
-  {
-    path: 'home',
-    loadComponent: () => import('./pages/home/home.page').then( m => m.HomePage)
-  },
-  {
-    path: 'vehicle-entry',
-    loadComponent: () => import('./feature/parking/pages/vehicle-entry/vehicle-entry.page').then( m => m.VehicleEntryPage)
   }
 ];

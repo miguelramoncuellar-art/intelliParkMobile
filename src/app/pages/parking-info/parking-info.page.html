@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Información</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>{{ parkingName }}</ion-card-title>
+      <ion-card-subtitle>{{ address }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list lines="full">
+
+        <ion-list-header>
+          <ion-label>Horario de atención</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>{{ schedule }}</ion-label>
+        </ion-item>
+
+        <ion-list-header>
+          <ion-label>Tarifas</ion-label>
+        </ion-list-header>
+
+        @for (rate of rates; track rate.vehicleType) {
+          <ion-item>
+            <ion-label>{{ rate.vehicleType }}</ion-label>
+            <ion-note slot="end" class="rate-value">
+              {{ formatRate(rate.pricePerHour) }}
+            </ion-note>
+          </ion-item>
+        }
+
+        <ion-list-header>
+          <ion-label>Contacto</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Teléfono</ion-label>
+          <ion-note slot="end">{{ phone }}</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Correo</ion-label>
+          <ion-note slot="end">{{ email }}</ion-note>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <p class="app-footer">
+    IntelliPark Mobile v{{ appVersion }} · Desarrollado por {{ developer }}
+  </p>
+
+</ion-content>
