@@ -81,3 +81,7 @@ Thumbs.db
 /android/build/
 *.jks
 *.keystore
+
+cypress.env.json
+cypress/videos
+cypress/screenshots
